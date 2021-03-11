@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Main_Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/lightblue_equirectangular.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://FPS_project_icon.png" type="Texture" id=4]
 [ext_resource path="res://assets/Space_Level_Objects/SpaceThumbnail.png" type="Texture" id=5]
 [ext_resource path="res://assets/Ruin_Level_Objects/RuinsThumbnail.png" type="Texture" id=6]
+[ext_resource path="res://Options_Popup.tscn" type="PackedScene" id=7]
 
 [sub_resource type="PanoramaSky" id=1]
 radiance_size = 0
@@ -64,6 +65,9 @@ font_data = ExtResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 testing_area_scene = "res://Testing_Area.tscn"
 space_level_scene = "res://assets/Space_Level_Objects/Space_Level.tscn"
 ruins_level_scene = "res://assets/Ruin_Level_Objects/Ruins_Level.tscn"
@@ -243,110 +247,4 @@ margin_bottom = 60.0
 texture = ExtResource( 6 )
 expand = true
 
-[node name="Options_Menu" type="Panel" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0.901961 )
-margin_right = 330.0
-margin_bottom = 720.0
-custom_styles/panel = SubResource( 4 )
-
-[node name="Title_Label" type="Label" parent="Options_Menu"]
-margin_left = 20.0
-margin_top = 10.0
-margin_right = 227.0
-margin_bottom = 53.0
-rect_scale = Vector2( 1.4, 1.4 )
-custom_fonts/font = SubResource( 5 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 3
-custom_constants/shadow_offset_y = 3
-text = "Options"
-align = 1
-valign = 1
-
-[node name="Label_Mouse_Sensitivity" type="Label" parent="Options_Menu"]
-margin_top = 120.0
-margin_right = 330.0
-margin_bottom = 152.0
-custom_fonts/font = SubResource( 5 )
-text = "Mouse sensitivity"
-align = 1
-valign = 1
-
-[node name="HSlider_Mouse_Sensitivity" type="HSlider" parent="Options_Menu"]
-margin_left = 10.0
-margin_top = 160.0
-margin_right = 320.0
-margin_bottom = 176.0
-min_value = 0.001
-max_value = 0.4
-step = 0.004
-value = 0.012
-
-[node name="Label_Joypad_Sensitivity" type="Label" parent="Options_Menu"]
-margin_top = 190.0
-margin_right = 330.0
-margin_bottom = 222.0
-custom_fonts/font = SubResource( 5 )
-text = "Joypad sensitivity"
-align = 1
-valign = 1
-
-[node name="HSlider_Joypad_Sensitivity" type="HSlider" parent="Options_Menu"]
-margin_left = 10.0
-margin_top = 230.0
-margin_right = 320.0
-margin_bottom = 246.0
-min_value = 0.1
-max_value = 5.0
-step = 0.1
-value = 0.1
-
-[node name="Check_Button_VSync" type="CheckButton" parent="Options_Menu"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -135.0
-margin_top = -450.0
-margin_right = 135.0
-margin_bottom = -410.0
-custom_fonts/font = SubResource( 5 )
-pressed = true
-text = "V-Sync"
-
-[node name="Button_Fullscreen" type="Button" parent="Options_Menu"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -135.0
-margin_top = -400.0
-margin_right = 135.0
-margin_bottom = -350.0
-custom_fonts/font = SubResource( 5 )
-text = "Fullscreen"
-
-[node name="Check_Button_Debug" type="CheckButton" parent="Options_Menu"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -155.0
-margin_top = -150.0
-margin_right = 155.0
-margin_bottom = -110.0
-custom_fonts/font = SubResource( 5 )
-text = "Debug display"
-
-[node name="Button_Back" type="Button" parent="Options_Menu"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -155.0
-margin_top = -70.0
-margin_right = 155.0
-margin_bottom = -20.0
-custom_fonts/font = SubResource( 5 )
-text = "Back"
+[node name="Options_Popup" parent="." instance=ExtResource( 7 )]

@@ -7,8 +7,8 @@ const MAIN_MENU_PATH = "res://Main_Menu.tscn"
 # ------------------------------------
 # All of the GUI/UI related variables
 
-# The popup scene, and a variable to hold the popup
-const POPUP_SCENE = preload("res://Pause_Popup.tscn")
+# Popup window scenes, and a variable to hold the popups
+const PAUSE_SCENE = preload("res://Pause_Popup.tscn")
 var popup = null
 
 # A canvas layer node so our GUI/UI is always drawn on top
@@ -96,7 +96,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		if popup == null:
 			# Make a new popup scene
-			popup = POPUP_SCENE.instance()
+			popup = PAUSE_SCENE.instance()
 			
 			# Connect the signals
 			popup.get_node("Button_quit").connect("pressed", self, "popup_quit")
@@ -120,6 +120,7 @@ func popup_closed():
 	
 	# If we have a popup, destoy it
 	if popup != null:
+		popup.visible = false
 		popup.queue_free()
 		popup = null
 
@@ -164,8 +165,11 @@ func play_sound(sound_name, loop_sound=false, sound_position=null):
 		add_child(new_audio)
 		created_audio.append(new_audio)
 		
-		# Send the newly created simple audio player the audio stream and sound position
-		new_audio.play_sound(audio_clips[sound_name], sound_position)
+		if audio_clips[sound_name] != null:
+			# Send the newly created simple audio player the audio stream and sound position
+			new_audio.play_sound(audio_clips[sound_name], sound_position)
+		else:
+			print("audio clip '{0}' is null!".format([sound_name]))
 	
 	# If we do not have an audio clip with the name sound_name, print a error message
 	else:
